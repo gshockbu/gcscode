@@ -157,6 +157,38 @@ endpoints:
   #   (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
   #   capabilities: ["execute_code", "file_search", "actions", "tools"]
   custom:
+  - name: "LiteLLM"
+      apiKey: "${LITELLM_API_KEY}"
+      baseURL: "${LITELLM_URL}"
+      # if using LiteLLM example in docker-compose.override.yml.example, use "http://litellm:8000/v1"
+      models:
+        default: 
+          [
+            'anthropic.claude-3-5-haiku-20241022-v1:0'
+            'amazon.nova-lite-v1:0'
+            'meta.llama3-2-1b-instruct-v1:0'
+          ]
+        fetch: true
+      titleConvo: true
+      titleModel: "current_model"
+      summaryModel: "current_model"
+      summarize: false
+      forcePrompt: false
+      modelDisplayLabel: 'LiteLLM'
+
+   # Azure Open AI
+   - name: "Azure Open AI"
+      apiKey: "${AZURE_OPENAI_API_KEY}"
+      baseURL: "${AZURE_OPENAI_URL}"  
+      models:
+        default: ["bu-gpt4"]
+        fetch: true
+      titleConvo: true
+      titleModel: "current_model"
+      summaryModel: "current_model"
+      summarize: false
+      forcePrompt: false
+      modelDisplayLabel: 'AzureOpenAI'
     # Groq Example
     - name: 'groq'
       apiKey: '${GROQ_API_KEY}'
@@ -220,38 +252,6 @@ endpoints:
       # NOTE: For Mistral, it is necessary to drop the following parameters or you will encounter a 422 Error:
       dropParams: ['stop', 'user', 'frequency_penalty', 'presence_penalty']
 
-    # OpenRouter Example
-    - name: 'OpenRouter'
-      # For `apiKey` and `baseURL`, you can use environment variables that you define.
-      # recommended environment variables:
-      apiKey: '${OPENROUTER_KEY}'
-      baseURL: 'https://openrouter.ai/api/v1'
-      models:
-        default: ['meta-llama/llama-3-70b-instruct']
-        fetch: true
-      titleConvo: true
-      titleModel: 'meta-llama/llama-3-70b-instruct'
-      # Recommended: Drop the stop parameter from the request as Openrouter models use a variety of stop tokens.
-      dropParams: ['stop']
-      modelDisplayLabel: 'OpenRouter'
-
-    # Portkey AI Example
-    - name: "Portkey"
-      apiKey: "dummy"
-      baseURL: 'https://api.portkey.ai/v1'
-      headers:
-          x-portkey-api-key: '${PORTKEY_API_KEY}'
-          x-portkey-virtual-key: '${PORTKEY_OPENAI_VIRTUAL_KEY}'
-      models:
-          default: ['gpt-4o-mini', 'gpt-4o', 'chatgpt-4o-latest']
-          fetch: true
-      titleConvo: true
-      titleModel: 'current_model'
-      summarize: false
-      summaryModel: 'current_model'
-      forcePrompt: false
-      modelDisplayLabel: 'Portkey'
-      iconURL: https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/rjqy7ghvjoiu4cd1xjbf
 # fileConfig:
 #   endpoints:
 #     assistants:
