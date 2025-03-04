@@ -162,6 +162,7 @@ endpoints:
       summaryModel: "current_model"
       summarize: false
       forcePrompt: false
+         iconURL: https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/rjqy7ghvjoiu4cd1xjbf
   # assistants:
   #   disableBuilder: false # Disable Assistants Builder Interface by setting to `true`
   #   pollIntervalMs: 3000  # Polling interval for checking assistant updates
@@ -182,8 +183,7 @@ endpoints:
   #   disableBuilder: false
   #   (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
   #   capabilities: ["execute_code", "file_search", "actions", "tools"]
-https://terriergptdev.bu.edu/login
-      iconURL: https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/rjqy7ghvjoiu4cd1xjbf
+   
 # fileConfig:
 #   endpoints:
 #     assistants:
